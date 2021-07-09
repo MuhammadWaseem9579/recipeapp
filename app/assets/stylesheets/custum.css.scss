@@ -16,3 +16,26 @@
 	background-image : asset-url('mainpageimg.jpeg');
 	background-size : cover;
 }
+.center-align {
+	margin: auto 50%;
+}
+.center-v {
+	margin : auto;
+	background-color : #e3e3e3;
+	padding : 50px;
+	border-radius : 10px;
+}
+
+.link a {
+	color : #000;
+	text-decoration : none;
+}
+
+.img-align {
+	margin-top : 50%;
+	border-radius : 50px;
+}
+
+#recipe-list-block {
+	margin : auto;
+}

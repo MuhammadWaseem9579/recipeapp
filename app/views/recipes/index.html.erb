@@ -1,0 +1,21 @@
+<br><br>
+<h1 class="center">list of Recipes</h1>
+<hr>
+<br>
+<% @recipes.each do |r|%>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-2">
+					<section class="center">
+						<%= gravatar_for(r.chef) %>
+					</section>
+				</div>
+		        	<div class="h-100 p-5 bg-light border rounded-3 center-align">
+		          		<h2 class="link"><%= link_to r.name, recipe_path(r) %></h2>
+		        	 	<p><%= truncate(r.description, length: 150) %></p>
+		          		<p><small><%= time_ago_in_words(r.created_at) %></small></p>
+		        		</div>
+		      		</div>
+		    	</div>
+		   	</div>
+<% end %>
