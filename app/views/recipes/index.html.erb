@@ -7,20 +7,19 @@
 	<% @recipes.each do |r|%>
   <div class="row col-md-12 p-3">
     <div class="col-md-2 align-self-center">
-      	<section class="center">
-			<%= gravatar_for(r.chef) %>	
-		</section>
+    	<section class="center">
+				<%= gravatar_for(r.chef) %>	
+			</section>
     </div>
     <div class="col">
       <div class="col-md-10 justify-content-center">
-		        	<div class="h-100 p-5 bg-light border rounded-3">
-		          		<h2 class="link"><%= link_to r.name, recipe_path(r) %></h2>
-		        	 	<p><%= truncate(r.description, length: 75) %></p>
-		          		<p><small><%= time_ago_in_words(r.created_at) %></small></p>
-		        	</div>
+      	<div class="h-100 p-5 bg-light border rounded-3">
+        	<h2 class="link"><%= link_to r.name, recipe_path(r) %></h2>
+      	 	<p><%= truncate(r.description, length: 75) %></p>
+        	<p><small><%= time_ago_in_words(r.created_at) %></small></p>
+      	</div>
 			</div>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>
-
