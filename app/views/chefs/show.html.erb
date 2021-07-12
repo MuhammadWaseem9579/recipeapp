@@ -1,0 +1,11 @@
+<%= render 'layouts/title', title: "Chef #{@chef.name}'s profile" %>
+
+<div class="d-flex flex-column align-items-center">
+	<div>
+		<%= gravatar_for @chef, size: 150 %>
+	</div>
+</div>
+
+<br><br>
+
+<%= render 'layouts/recipes', obj: @chef.recipes %>

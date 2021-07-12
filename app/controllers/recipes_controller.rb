@@ -6,6 +6,9 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
+		puts "=-=-=-=-=-=-=-=-=-=-=-==-=-=-"
+		puts @recipe
+		puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 	end
 
 	def create
