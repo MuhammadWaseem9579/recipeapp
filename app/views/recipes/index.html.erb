@@ -1,2 +1,8 @@
 <%= render 'layouts/title', title: "Recipes List" %>
+<div align = "center">
+	<%= will_paginate @recipes, renderer: BootstrapPagination::Rails %>
+</div>
 <%= render 'layouts/recipes', obj: @recipes %>
+<div align = "center">
+	<%= will_paginate @recipes, renderer: BootstrapPagination::Rails %>
+</div>

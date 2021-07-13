@@ -12,7 +12,11 @@
 	</p>
 	<p>
 		<%= link_to "Recipes List" , recipes_path , class: "btn btn-primary" %> 
-		<%= link_to "Edit Recipe" , edit_recipe_path(@recipe) , class: "btn btn-warning" %> 
-		<%= link_to "Delete Recipe", recipe_path(@recipe) , method: :delete , class: "btn btn-danger", data: {confirm: "Are you sure you wanna delete it?"}%>
+
+		<% if logged_in? && (@recipe.chef == current_chef || current_chef.admin ) %>
+			<%= link_to "Edit Recipe" , edit_recipe_path(@recipe) , class: "btn btn-warning" %> 
+			<%= link_to "Delete Recipe", recipe_path(@recipe) , method: :delete , class: "btn btn-danger", data: {confirm: "Are you sure you wanna delete it?"}%>
+		<% end %>
+		
 	</p>
 </div>

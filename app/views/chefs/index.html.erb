@@ -1,0 +1,25 @@
+<%= render 'layouts/title' , title: "Showing all Chefs"%>
+<div class="d-flex flex-column align-items-center">
+	<% @chefs.each do |c| %>
+		<div class="col-md-4 card text-center ">
+		  <div class="card-header p-5">
+		    <%= link_to gravatar_for(c , size: 120), c %>
+		    <div>
+		    	<br>
+		    	<h3 class=""><%= c.name %></h3>
+		    </div>
+		    <div>
+		    	<small><%= pluralize(c.recipes.count, "Recipe") %></small>
+		    </div>
+		    <div>
+		    	<% if logged_in? && current_chef.admin && !c.admin%>
+		    		
+		    			<%= link_to "Delete Chef", chef_path(c), method: "delete", class: "btn btn-danger btn-lg", data: {confirmat: "Are you sure you wanna delete User"} %>
+		    		
+		    	<% end %>
+		    </div>
+		  </div>
+		</div>
+		<br>
+	<% end %>
+</div>

@@ -3,7 +3,6 @@
   <div class="row col-md-12 p-3">
     <div class="col-md-2 align-self-center">
     	<section class="center">
-        <%= puts r.chef %>
 				<%= gravatar_for(r.chef) %>	
 			</section>
     </div>
@@ -12,7 +11,14 @@
       	<div class="h-100 p-5 bg-light border rounded-3">
         	<h2 class="link"><%= link_to r.name, recipe_path(r) %></h2>
       	 	<p><%= truncate(r.description, length: 75) %></p>
+          <p><small>Created by : <%= r.chef.name %></small></p>
         	<p><small><%= time_ago_in_words(r.created_at) %></small></p>
+
+          <% if logged_in? && r.chef == current_chef %>
+            <%= link_to "Edit Recipe" , edit_recipe_path(r) , class: "btn btn-warning" %>
+            <%= link_to "Delete Recipe", recipe_path(r) , method: :delete , class: "btn btn-danger", data: {confirm: "Are you sure you wanna delete it?"}%> 
+          <% end %>
+
       	</div>
 			</div>
     </div>

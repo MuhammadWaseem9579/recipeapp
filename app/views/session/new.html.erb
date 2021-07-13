@@ -1,0 +1,17 @@
+
+<%= form_for :session, url: login_path do |f| %>
+
+<br>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email , class: "form-control", id: "exampleInputEmail1", placeholder: "Enter Recipe Name" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" , placeholder: "Enter Password" %>
+  </div>
+  <br>
+  <%= f.submit "Login" , class: "btn btn-primary" %>
+
+<% end %>

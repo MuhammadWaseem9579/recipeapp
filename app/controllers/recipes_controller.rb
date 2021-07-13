@@ -1,19 +1,20 @@
 class RecipesController < ApplicationController
+	before_action :set_recipe, only: [:edit,:update,:show]
+	before_action :require_user, except: [:index,:show]
+	before_action :require_same_user, only: [:edit,:update,:delete]
 
 	def index
-		@recipes = Recipe.all
+		@recipes = Recipe.paginate(page: params[:page], per_page: 3)
+		# @recipes = Recipe.all
 	end
 
 	def new
 		@recipe = Recipe.new
-		puts "=-=-=-=-=-=-=-=-=-=-=-==-=-=-"
-		puts @recipe
-		puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 	end
 
 	def create
 		@recipe = Recipe.new(recipe_params)
-		@recipe.chef = Chef.last
+		@recipe.chef = current_chef
 		if @recipe.save
 			redirect_to recipe_path(@recipe)
 		else
@@ -22,15 +23,13 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		@recipe = Recipe.find(params[:id])
 	end
 
 	def edit
-		@recipe = Recipe.find(params[:id])
 	end
 
 	def update
-		@recipe = Recipe.find(params[:id])
+		
 		if @recipe.update(recipe_params)
 			redirect_to recipe_path(@recipe)
 		else
@@ -47,8 +46,20 @@ class RecipesController < ApplicationController
 	end
 
 	private
+
+	def set_recipe
+		@recipe = Recipe.find(params[:id])
+	end
+
 		def recipe_params
 			params.require(:recipe).permit(:name,:description)
+		end
+
+		def require_same_user
+			if current_chef != @recipe.chef && !current_chef.admin
+				flash[:danger] = "You can only delete your own recipes"
+				redirect_to recipes_path
+			end
 		end
 
 end
