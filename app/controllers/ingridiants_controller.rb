@@ -20,7 +20,7 @@ class IngridiantsController < ApplicationController
 	end
 
 	def show
-		
+		@ingridiant = Ingridiant.find(params[:id])
 	end
 
 	def edit

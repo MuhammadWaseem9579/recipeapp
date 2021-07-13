@@ -27,6 +27,15 @@
           <%= f.text_area :description, class: "form-control", placeholder: "Enter Recipe steps", autofocus: true %>
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <%= f.collection_check_boxes :ingridiant_ids, Ingridiant.all, :id,:name do |cb| %>
+            <% cb.label(class: "checkbox-inline mx-2") {cb.check_box(class: "check-box")+ cb.text} %>
+            <% end %>
+          </div>
+      </div>
 <br> 
       <div class="form-group">
         <div class="col-md-offset-2 col-md-2">
