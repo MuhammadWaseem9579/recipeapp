@@ -1,0 +1,12 @@
+<%= form_for @ingridiant do |f| %>
+
+<br>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name , class: "form-control", id: "exampleInputEmail1", placeholder: "Enter Recipe Name" %>
+  </div>
+  <br>
+  <br>
+  <%= f.submit "Update Ingridiant" , class: "btn btn-primary" %>
+
+<% end %>

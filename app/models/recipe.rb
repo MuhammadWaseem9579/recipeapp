@@ -6,5 +6,6 @@ class Recipe < ApplicationRecord
 	has_many :recipe_ingridiants
 
 	has_many :ingridiants, through: :recipe_ingridiants
+	has_many :comments, dependent: :destroy 
 
 end

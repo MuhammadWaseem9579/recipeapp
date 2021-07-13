@@ -1,0 +1,12 @@
+<%= render 'layouts/errormsg', obj: @ingridiant%>
+<%= form_for @ingridiant do |f| %>
+
+<br>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name , class: "form-control", id: "exampleInputEmail1", placeholder: "Enter ingridiant name" %>
+  </div>
+  <br>
+  <%= f.submit "Add iIngridiant" , class: "btn btn-primary" %>
+
+<% end %>

@@ -1,0 +1,29 @@
+<%= render 'layouts/title', title: "Ingridiants List" %>
+
+<div class="container d-flex flex-column align-items-center">
+	<div align = "center">
+		<%= will_paginate @ingridiants, renderer: BootstrapPagination::Rails %>
+	</div>
+
+	<% @ingridiants.each do |i|%>
+	    <div class="col-md-6 mb-5">
+	      	<div class="h-100 p-5 bg-light border rounded-3">
+	        	<h2 class="link"><%= link_to i.name, ingridiant_path(i) %></h2>
+
+	        	<small>
+	        		<p><%= pluralize(i.recipes.count, "Recipe") %></p>
+	        	</small>
+
+	          	<% if logged_in? %>
+	            <%= link_to "Edit Recipe" , edit_ingridiant_path(i) , class: "btn btn-warning" %>
+	            <% if current_chef.admin %>
+	            <%= link_to "Delete Recipe", ingridiant_path(i) , method: :delete , class: "btn btn-danger", data: {confirm: "Are you sure you wanna delete it?"}%> 
+	          	<% end %>
+	          	<% end %>
+	      	</div>
+	    </div>
+	<% end %>
+	<div align = "center">
+		<%= will_paginate @ingridiants, renderer: BootstrapPagination::Rails %>
+	</div>
+</div>
